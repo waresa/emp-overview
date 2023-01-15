@@ -9,18 +9,43 @@ include_once 'includes/header.inc.php';
 
 <body id="index">
 
-    <section class="index-login">
-        <div class="index-login-login">
-            <h4>LOGG INN</h4>
-            <br>
-            <form action="includes/login.inc.php" method="post">
-                <input type="text" name="email" placeholder="E-post">
-                <input type="password" name="pwd" placeholder="Passord">
+    <section>
+        <div class="container">
+            <div class="container-2">
+                <div>
+                    <h4>LOGG INN</h4>
+                </div>
                 <br>
+                <div>
+                    <form action="includes/login.inc.php" method="post">
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="text" name="email" placeholder="E-post">
+                        </div>
+                        <div>
+                            <label for="pwd">Password:</label>
+                            <input type="password" name="pwd" placeholder="Passord">
+                        </div>
+
+                        <br>
+                        <button type="submit" name="submit" class="submit-btn">LOGG INN</button>
+                    </form>
+                </div>
                 <br>
-                <button type="submit" name="submit">LOGG INN</button>
-            </form>
-        </div>
+                <?php
+
+                if (isset($_GET["error"])) {
+                    if ($_GET["error"] == "emptyinput") {
+                        echo "<p>Write in your email and password!</p>";
+                    } else if ($_GET["error"] == "usernotfound") {
+                        echo "<p>Wrong Email or Password!</p>";
+                    }
+                }
+                ?>
+            </div>
+
+
+
         </div>
     </section>
 

@@ -6,6 +6,7 @@ if (isset($_POST["submit"])) {
     // Grabbing the data
     $images = $_FILES['files'];
     $users_id = $_SESSION["userid"];
+    $info = $_POST["info"];
 
     $email = $_SESSION["useremail"];
 
@@ -28,7 +29,7 @@ if (isset($_POST["submit"])) {
 
     $userData = $user->getUserDataById($users_id);
     $corps_id = $userData['corps_id'];
-    $result = $file->uploadReciepts($users_id, $images, $corps_id, $file_type);
+    $result = $file->uploadReciepts($users_id, $images, $corps_id, $file_type, $info);
 
     if ($result == false) {
         header("Location: ../pages/reg-reciepts.php?error=fileerror");

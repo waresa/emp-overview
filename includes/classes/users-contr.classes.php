@@ -75,6 +75,13 @@ class UsersContr extends Users
         return $result;
     }
 
+    //delete hour from a specific user by id
+    public function deleteUserHour($hour_id)
+    {
+        $result = $this->deleteHourById($hour_id);
+        return $result;
+    }
+
     //get user data of a specific user by id
     public function getUserDataById($id)
     {
@@ -98,6 +105,30 @@ class UsersContr extends Users
     {
 
         $this->registerHours($user_id, $corps_id, $date, $from, $to, $hours);
+    }
+
+    //get all work hours from a specific user
+    public function getUserWorkHours($user_id)
+    {
+        $result = $this->getHours($user_id);
+        return $result;
+    }
+
+    //get all work hours from a specific user and a specific date range
+    public function getUserWorkHoursByDate($user_id, $from, $to)
+    {
+
+        //check if the date range is valid
+        if ($from > $to) {
+            $prev_url = $_SERVER['HTTP_REFERER'];
+            $query_string = http_build_query(array('error' => 'invaliddaterange'));
+            $prev_url .= '?' . $query_string;
+            header("Location: $prev_url");
+            exit();
+        }
+
+        $result = $this->getHoursDateRange($user_id, $from, $to);
+        return $result;
     }
 
 

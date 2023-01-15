@@ -14,5 +14,5 @@ if (isset($_POST["submit"])) {
     $user->deleteUser($user_id);
 
 
-    header("location: ../pages/employees.php?error=none");
+    header("location: ../pages/admin-employees.php?error=none");
 }

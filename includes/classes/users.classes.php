@@ -192,4 +192,39 @@ class Users extends Dbh
         // Return the number of rows affected by the INSERT statement
         return $stmt->rowCount();
     }
+
+    //get all hours based on user_id
+    function getHours($user_id)
+    {
+        //sanitize
+        $user_id = htmlspecialchars(strip_tags($user_id));
+
+        $stmt = $this->connect()->prepare('SELECT * FROM hours WHERE users_id = ? ORDER BY date DESC;');
+        $stmt->execute([$user_id]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    //get all hours based on user_id and date range
+    function getHoursDateRange($user_id, $from, $to)
+    {
+        //sanitize
+        $user_id = htmlspecialchars(strip_tags($user_id));
+        $from = htmlspecialchars(strip_tags($from));
+        $to = htmlspecialchars(strip_tags($to));
+
+        $stmt = $this->connect()->prepare('SELECT * FROM hours WHERE users_id = ? AND date BETWEEN ? AND ? ORDER BY date DESC;');
+        $stmt->execute([$user_id, $from, $to]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    function deleteHourById($hour_id)
+    {
+        //sanitize
+        $hour_id = htmlspecialchars(strip_tags($hour_id));
+        $stmt = $this->connect()->prepare('DELETE FROM hours WHERE id = ?;');
+        $result = $stmt->execute([$hour_id]);
+        return $result;
+    }
 }

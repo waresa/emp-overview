@@ -1,0 +1,13 @@
+{
+    "name": "waris/bedrift",
+    "type": "project",
+    "require": {
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Waris\\Bedrift\\": "includes/"
+        }
+    }
+}

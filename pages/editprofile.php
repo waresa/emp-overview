@@ -15,20 +15,25 @@ $userData = $user->getUserData($useremail);
 
 ?>
 
-<section class="index-login">
-    <div class="wrapper">
-        <div class="index-login-signup">
+<section>
+    <div class="container">
+        <div class="container-2">
             <h4>Edit Profile</h4>
             <hr>
             <h3>Name: <?php echo $userData['full_name'] ?></h3>
 
             <form action="../includes/editprofile.inc.php" method="post">
+                <label for="old_pwd">Old Password:</label>
                 <input type="password" name="old_pwd" placeholder="Old Password">
+                <label for="new_pwd">New Password:</label>
                 <input type="password" name="new_pwd" placeholder="New Password">
+                <label for="pwdrepeat">Repeat New Password:</label>
                 <input type="password" name="pwdrepeat" placeholder="Repeat Password">
+                <label for="email">Email:</label>
                 <input type="text" name="email" placeholder="E-post" value="<?php echo $userData['users_email'] ?>">
                 <br>
-                <button type="submit" name="submit">Save Changes</button>
+                <br>
+                <button type="submit" name="submit" class="submit-btn">Save Changes</button>
             </form>
         </div>
     </div>

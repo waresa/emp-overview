@@ -8,9 +8,9 @@ if (!isset($_SESSION['userid'])) {
 
 ?>
 
-<section class="index-login" id="reciepts">
-    <div class="wrapper">
-        <div class="index-login-signup">
+<section>
+    <div class="container">
+        <div class="container-2">
 
             <h2>Register Your Reciepts</h2>
             <hr>
@@ -19,9 +19,11 @@ if (!isset($_SESSION['userid'])) {
                 <div>
                     <label for="files">Reciepts:</label>
                     <input type="file" name="files[]" class="form-control" id="files" required multiple>
+                    <label for="info">Information about the reciept(s):</label>
+                    <input type="text" name="info" required>
                 </div>
                 <br>
-                <button type="submit" name="submit">Submit</button>
+                <button type="submit" name="submit" class="show-reciepts">Submit</button>
             </form>
             <?php //error handling
             if (isset($_GET['error'])) {

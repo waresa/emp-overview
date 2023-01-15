@@ -20,13 +20,6 @@ if (isset($_POST["submit"])) {
     $userData = $user->getUserDataById($users_id);
     $corps_id = $userData['corps_id'];
 
-    echo $from;
-    echo "<br>";
-    echo $to;
-    echo "<br>";
-
-    //check if from is earlier than to
-
     // Convert the times to DateTime objects
     $fromObj = new DateTime($from);
     $toObj = new DateTime($to);
@@ -48,8 +41,8 @@ if (isset($_POST["submit"])) {
         $hours = $diff->format('%h,%i');
 
         $user->registerWorkHours($users_id, $corps_id, $date, $from, $to, $hours);
-        header("location: ../pages/hours.php?error=none");
+        header("location: ../pages/reg-hours.php?error=hoursAdded");
     } else {
-        header("location: ../pages/hours.php?error=somethingwentwrong");
+        header("location: ../pages/reg-hours.php?error=somethingwentwrong");
     }
 }

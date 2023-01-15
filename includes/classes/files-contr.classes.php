@@ -1,8 +1,6 @@
 <?php
-require_once('modules\fpdf\fpdf.php');
-require_once('modules\fpdi2\src\autoload.php');
 
-use setasign\Fpdi\Fpdi;
+require '../vendor/autoload.php';
 
 class FilesContr extends Files
 {
@@ -140,6 +138,8 @@ class FilesContr extends Files
     //Function to take array of files and combine them into a pdf do not use imagick
     function combineImagesToPdf($images, $user_id)
     {
+
+        $ignored = false;
         // Set the temporary directory where the images will be stored
         $tmp_directory = "../includes/tmp_directory/";
 
@@ -165,7 +165,7 @@ class FilesContr extends Files
         $new_filename = "../includes/reciepts/" . $date . "." . $random_number . ".reciept.pdf";
 
         // Create a new PDF document
-        $pdf = new Fpdi();
+        $pdf = new setasign\Fpdi\Fpdi();
 
         // Loop through the array of images
         foreach ($images['name'] as $key => $value) {
@@ -210,10 +210,18 @@ class FilesContr extends Files
     }
 
     //upload reciepts and move them to the reciepts folder in includes
-    public function uploadReciepts($id, $files, $corps_id, $file_type)
+    public function uploadReciepts($id, $files, $corps_id, $file_type, $info)
     {
         $file_name = $this->combineImagesToPdf($files, $id);
-        $this->updateContract($id, $file_name, $corps_id, $file_type);
+        $this->updateReciept($id, $file_name, $corps_id, $file_type, $info);
         return $file_name;
+    }
+
+
+    //get employee reciepts
+    public function getEmployeeReciepts($id)
+    {
+        $reciepts = $this->getUsersReceipts($id);
+        return $reciepts;
     }
 }

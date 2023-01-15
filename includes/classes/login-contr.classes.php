@@ -16,11 +16,7 @@ class loginContr extends Login
     {
         if ($this->emptyInput() == false) {
             // echo "Empty input!";
-            $prev_url = $_SERVER['HTTP_REFERER'];
-            $query_string = http_build_query(array('error' => 'emptyinput'));
-            $prev_url .= '?' . $query_string;
-            header("Location: $prev_url");
-            exit();
+            header("location: ../pages/login.php?error=emptyinput");
         }
 
         $this->getUser($this->email, $this->pwd);
