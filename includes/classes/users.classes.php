@@ -122,6 +122,7 @@ class Users extends Dbh
         return $result;
     }
 
+
     // get user data from database using user_id
     function getDataUserId($user_id)
     {

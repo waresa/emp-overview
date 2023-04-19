@@ -20,5 +20,5 @@ if (isset($_POST["submit"])) {
     $signup->signupUser();
 
     // Going to back to front page
-    header("location: ../pages/signup.php?error=none");
+    header("location: ../pages/admin-signup.php?error=none");
 }

@@ -1,13 +1,13 @@
- <?php
-    // include_once '../includes/header.inc.php';
+<?php
+include_once '../includes/header.inc.php';
 
-    // if (!isset($_SESSION['userid']) || $_SESSION['userrole'] != 1) {
-    // header("Location: home.php");
+if (!isset($_SESSION['userid']) || $_SESSION['userrole'] != 1) {
+    header("Location: home.php");
     exit();
-    // }
-    ?>
+}
+?>
 
- <!-- <section>
+<section>
     <div class="container">
         <div class="container-2">
             <h4>Add New Employee</h4>
@@ -27,8 +27,8 @@
             </form>
         </div>
     </div>
-</section> -->
+</section>
 
- <?php
-    include_once '../includes/footer.inc.php';
-    ?>
+<?php
+include_once '../includes/footer.inc.php';
+?>
